@@ -1,0 +1,12 @@
+{
+  "manifest_version": 2,
+
+  "name": "News Topic Analytics Chrome Extension",
+  "description": "This extension shows you what news topics you have read in the past week.",
+  "version": "1.0",
+
+  "browser_action": {
+    "default_icon": "icon.png",
+    "default_popup": "popup.html"
+  }
+}
