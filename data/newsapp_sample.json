@@ -1,0 +1,126 @@
+[
+  {
+    "articleId": 1,
+    "topics": [
+      {
+        "topicId" : 1,
+        "score": "0.30",
+        "keywords":
+        [
+          {
+            "keyword": "dog",
+            "score": "0.15"
+          },
+          {
+            "keyword": "cat",
+            "score": "0.13"
+          },
+          {
+            "keyword": "puppies",
+            "score": "0.12"
+          }
+        ]
+      },
+      {
+        "topicId" : 2,
+        "score": "0.30",
+        "keywords":
+        [
+          {
+            "keyword": "pets",
+            "score": "0.15"
+          },
+          {
+            "keyword": "nursery",
+            "score": "0.13"
+          },
+          {
+            "keyword": "coke",
+            "score": "0.12"
+          }
+        ]
+      },
+      {
+        "topicId" : 3,
+        "score": "0.30",
+        "keywords":
+        [
+          {
+            "keyword": "dogs",
+            "score": "0.15"
+          },
+          {
+            "keyword": "horse",
+            "score": "0.13"
+          },
+          {
+            "keyword": "care",
+            "score": "0.12"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "articleId": 2,
+    "topics": [
+      {
+        "topicId" : 4,
+        "score": "0.30",
+        "keywords":
+        [
+          {
+            "keyword": "asdf",
+            "score": "0.15"
+          },
+          {
+            "keyword": "asdfasdf",
+            "score": "0.13"
+          },
+          {
+            "keyword": "asdfasdf",
+            "score": "0.12"
+          }
+        ]
+      },
+      {
+        "topicId" : 5,
+        "score": "0.30",
+        "keywords":
+        [
+          {
+            "keyword": "aaa",
+            "score": "0.15"
+          },
+          {
+            "keyword": "bbbb",
+            "score": "0.13"
+          },
+          {
+            "keyword": "ccc",
+            "score": "0.12"
+          }
+        ]
+      },
+      {
+        "topicId" : 3,
+        "score": "0.30",
+        "keywords":
+        [
+          {
+            "keyword": "ewq",
+            "score": "0.15"
+          },
+          {
+            "keyword": "tre",
+            "score": "0.13"
+          },
+          {
+            "keyword": "uyt",
+            "score": "0.12"
+          }
+        ]
+      }
+    ]
+  },
+]
