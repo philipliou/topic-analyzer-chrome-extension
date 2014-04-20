@@ -11,8 +11,13 @@
   },
 
   "permissions": [
-    "history"
+    "history",
+     "alarms"
   ],
+
+  "background": {
+    "scripts": ["js/background.js"]
+  },
 
   "content_scripts": [
   {

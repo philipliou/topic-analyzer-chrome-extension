@@ -1,8 +1,6 @@
-// getHistory from the last week
-// function that runs a function at end of every day
-// sends results from getHistory to the server
 
-// 
+
+
 function getHistory() {
   console.log('event: getHistory');
   var searchObject = { text: ""};
@@ -22,16 +20,29 @@ function displayHistory(url_array) {
   console.log('event : displayHistory');
   for (var i = 0; i < url_array.length; i++) {
     console.log('!!!');
-    var p = document.createElement('p');
-    p.setAttribute('text', url_array[i]);
-    $('#results').appendChild(p);
+    $('<p/>', {
+      text: url_array[i]
+    }).appendTo('#results');
   }
 }
 
-// Send the list of URLs to server
-function sendHistory() {
-
+// Returns true if domain is in Whitelist of news domains
+function newsURL(url) {
+  var whitelist = {
+    'www.cnn.com': true,
+    'www.newyorktimes.com': true,
+    'www.nyt.com':true,
+    'www.wallstreetjournal.com':true,
+    'www.wsj.com':true,
+  }
 }
+
+  // (whitelist[url] == true) ? (return true) : (return false);
+
+// Send the list of URLs to server
+// function sendHistory() {
+
+// }
 
 // Helper to parse domain from URL
 function url_domain(data) {
@@ -47,7 +58,3 @@ document.addEventListener('DOMContentLoaded',
     getHistory();
   }
 );
-
-function parseSources(results) {
-
-}
