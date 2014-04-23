@@ -1,4 +1,4 @@
-var SERVER_ENDPOINT = "http://tpas.cleverapps.io";
+var SERVER_ENDPOINT = "http://tpas.cleverapps.io/";
 var CURRENT_VERSION = 20140419.001;
 var KEY_USER_ID = "userId";
 var KEY_SECRET_KEY = "secretKey";
@@ -119,7 +119,7 @@ var TopicAnalysisService = function(initCallback) {
         signRequest: function() {
             //token deviceId-timestamp-sign=sha1(requestId.deviceId.secretKey)
             var requestId = currentTimeInMs();
-            return [userId, requestId, sha1(userId + requestId + secretKey)].join("-");
+            return [userId, requestId, sha1(userId + ""+ requestId +""+ secretKey)].join("-");
         },
         postRequest: function(url, data, successHandler, errorHandler) {
             return makeRequest(url, data, 'POST', successHandler, errorHandler);
