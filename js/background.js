@@ -11,13 +11,15 @@ var topicAnalysisClient = new TopicAnalysisService(function(){
 
 var NewsHistoryRetriever = function(){ 
 var that = {
-  start_range: Date.now() - 7*24*60*60*1000, // The past day
+  start_range: Date.now() - 4*7*24*60*60*1000, // The past day
   end_range: Date.now() - 60*1000, // Now
+  initialHistoryCall: true,
 
   // Function to update range after URLs from the previous range has been sent to server
   updateRange: function() {
     that.start_range = that.end_range;
     that.end_range = Date.now();
+    that.initialHistoryCall = false;
   },
 
   // Query function for the records between start and end time
@@ -26,8 +28,13 @@ var that = {
     var searchObject = {
       text: "", 
       startTime: that.start_range, 
-      endTime: that.end_range
+      endTime: that.end_range,
     };
+
+    if (that.initialHistoryCall == true) {
+      searchObject.maxResults = 1000;
+    }
+
     chrome.history.search(searchObject, that.parseHistory);
   },
 
