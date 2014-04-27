@@ -112,3 +112,10 @@ chrome.alarms.onAlarm.addListener(function(alarm) {
     newsHistoryRetriever.getChromeHistory();
   }
 });
+
+chrome.browserAction.onClicked.addListener(function(activeTab) {
+  var tabUrl = 'html/newsapp.html';
+  chrome.tabs.create({
+    url: tabUrl
+  })
+})

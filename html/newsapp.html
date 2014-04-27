@@ -9,13 +9,28 @@
       - [1]: http://developer.chrome.com/extensions/contentSecurityPolicy.html
      -->
      <link rel="stylesheet" type="text/css" href="../css/main.css" />
+     <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css" />
+    <script src="../js/aclient.js"></script>
     <script src="../js/jquery.js"></script>
-    <script src="../js/popup.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
     <script src="../js/showHistory.js"></script>
+    <script src="../js/charts.js"></script>
+    <script src="../js/highcharts.js"></script>
+    <script src="../js/processdata.js"></script>
   </head>
   <body>
-    <div id="results">
-      <h1> Here are your news articles from the past week visualized for you </h1>
+    <div class="container">
+      <div id="results">
+        <h4> News Topic Analyzer </h4>
+      </div>
+      <div id="report_options" class="btn-group">
+        <button id="percentChartButton" type="button" class="btn btn-default">Past Date</button>
+        <button id="percentChartButton" type="button" class="btn btn-default">Past Day</button>
+        <button id="percentChartButton" type="button" class="btn btn-default">Past Month</button>
+        <button id="percentChartButton" type="button" class="btn btn-default">Past Week</button>
+        
+      </div>
+      <div id="container" style="min-width: 800px; height: 800px; margin: 0 auto" class="container"></div>
     </div>
   </body>
 </html>

@@ -1,7 +1,9 @@
 function chartData() {
   this.title = {};
   this.chart = {};
-  this.subtitle = {};
+  this.subtitle = {
+    text: 'Source: Your Chrome Browswer History'
+  };
   this.xAxis = {
     tickmarkPlacement: 'on',
     title: {
@@ -9,7 +11,9 @@ function chartData() {
     }
   };
   this.yAxis = {
-    title: {}
+    title: {
+      text: 'Composition Percent'
+    }
   };
   this.tooltip = {
     pointFormat: '<span style="color:{series.color}">{series.name}</span>: <b>{point.percentage:.1f}%</b> ({point.y:,.0f} millions)<br/>',
