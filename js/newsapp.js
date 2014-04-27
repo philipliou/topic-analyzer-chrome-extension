@@ -51,10 +51,20 @@ document.addEventListener('DOMContentLoaded',
 
     $("#groupings :button").click(function() {
       var grouping = $(this).attr("value");
-      console.log(grouping)
+      $("#grouping").val(grouping);
     });
+
+    $("#timespan, #groupings :button").click(function() {
+      var toDate = $("#timespan #toDate").attr("value")
+      var fromDate = $("#timespan #fromDate").attr("value")
+      var groupBy = $("#grouping").attr("value")
+      displayPercentChart(toDate, fromDate, groupBy)
+      console.log("event: displayPercentChart")
+    })
   }
 );
+
+
 
 // Helper function to calculate the time ranges in epoch time based on text
 function epochFromText(range) {
