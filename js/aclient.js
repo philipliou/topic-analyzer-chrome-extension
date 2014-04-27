@@ -1,4 +1,4 @@
-var SERVER_ENDPOINT = "http://tpas.cleverapps.io/";
+var SERVER_ENDPOINT = "http://topicanalysis.intelworx.com/";
 var CURRENT_VERSION = 20140419.001;
 var KEY_USER_ID = "userId";
 var KEY_SECRET_KEY = "secretKey";
