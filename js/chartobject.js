@@ -45,11 +45,6 @@ function chartData() {
     this.plotOptions = plotOptionsObj;
   }
 
-  // set y-values
-  // each object = {
-  //   name: "topic1",
-  //   data: percentage,
-  // }
   this.setSeries = function(objArray) {
     this.series = objArray;
   }

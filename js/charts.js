@@ -2,6 +2,7 @@ var topicAnalysisClient = new TopicAnalysisService(function(){
   initialized = true;
 });
 
+// TODO: Need to work on TreeMap display in extension
 function displayTreeMap() {
   $('#container').highcharts({
       title: {
@@ -53,7 +54,7 @@ function displayTreeMap() {
 
 var percentChartPlotOptions = {
   area: {
-      stacking: 'normal',
+      stacking: 'percent',
       lineColor: '#ffffff',
       lineWidth: 1,
       marker: {

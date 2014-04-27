@@ -1,3 +1,5 @@
+var DAYS = 1000*60*60*24;
+
 function getHistory() {
   console.log('event: getHistory');
   var searchObject = { text: ""};
@@ -39,10 +41,6 @@ function url_domain(data) {
 
 document.addEventListener('DOMContentLoaded', 
   function() {
-    // Do something onload
-    // displayPercentChart();
-
-    // percentChart button
     $("#percentChartButton").click(function() {
       console.log('event: displayPercentChart')
       displayPercentChart();
@@ -52,5 +50,37 @@ document.addEventListener('DOMContentLoaded',
       console.log('event: displayTreeMap')
       displayTreeMap();
     });
+
+    $("#timespan :button").click(function() {
+      var range = $(this).attr("value");
+      $("#toDate").val(epochFromText(range).toDate);
+      $("#fromDate").val(epochFromText(range).fromDate);
+    });
+
+    $("#groupings :button").click(function() {
+      var grouping = $(this).attr("value");
+      console.log(grouping)
+    });
   }
 );
+
+// Helper function to calculate the time ranges in epoch time based on text
+function epochFromText(range) {
+  var toDate = Date.now()
+  var fromDate = Date.now() - 1*DAYS
+  switch(range) {
+    case 'week':
+      fromDate = Date.now() - 7*DAYS
+      break;
+    case 'month':
+      fromDate = Date.now() - 30*DAYS
+      break;
+    case 'year':
+      fromDate = Date.now() - 365*DAYS
+      break;
+  }
+  return {
+    toDate: toDate,
+    fromDate: fromDate
+  }
+}

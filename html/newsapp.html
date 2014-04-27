@@ -13,22 +13,32 @@
     <script src="../js/aclient.js"></script>
     <script src="../js/jquery.js"></script>
     <script src="../js/bootstrap.min.js"></script>
-    <script src="../js/showHistory.js"></script>
+    <script src="../js/newsapp.js"></script>
     <script src="../js/charts.js"></script>
     <script src="../js/highcharts.js"></script>
-    <script src="../js/processdata.js"></script>
+    <script src="../js/chartobject.js"></script>
   </head>
   <body>
     <div class="container">
       <div id="results">
         <h4> News Topic Analyzer </h4>
       </div>
-      <div id="report_options" class="btn-group">
-        <button id="percentChartButton" type="button" class="btn btn-default">Past Date</button>
-        <button id="percentChartButton" type="button" class="btn btn-default">Past Day</button>
-        <button id="percentChartButton" type="button" class="btn btn-default">Past Month</button>
-        <button id="percentChartButton" type="button" class="btn btn-default">Past Week</button>
-        
+      <div id="timespan" class="btn-group">
+        <h4> Select a time range </h4>
+        <input id="toDate" type="hidden" value="">
+        <input id="fromDate" type="hidden" value="">
+        <button value="today" class="btn btn-default" type="button">Past 24 Hours</button>
+        <button value="week" class="btn btn-default" type="button">Past 7 Days</button>
+        <button value="month" class="btn btn-default" type="button">Past 30 Days</button>
+        <button value="year" class="btn btn-default" type="button">Past 365 Days</button>
+      </div>
+      <div id="groupings" class="btn-group">
+        <h4> Select a grouping </h4>
+        <input id="grouping" type="hidden" value="">
+        <button value="day" type="button" class="btn btn-default">Past Date</button>
+        <button value="weekDay" type="button" class="btn btn-default">Past Day</button>
+        <button value="month" type="button" class="btn btn-default">Past Month</button>
+        <button value="week" type="button" class="btn btn-default">Past Week</button>
       </div>
       <div id="container" style="min-width: 800px; height: 800px; margin: 0 auto" class="container"></div>
     </div>
