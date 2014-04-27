@@ -32,7 +32,7 @@ var that = {
     };
 
     if (that.initialHistoryCall == true) {
-      searchObject.maxResults = 1000;
+      searchObject.maxResults = 1000; 
     }
 
     chrome.history.search(searchObject, that.parseHistory);
