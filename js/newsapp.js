@@ -41,15 +41,7 @@ function url_domain(data) {
 
 document.addEventListener('DOMContentLoaded', 
   function() {
-    $("#percentChartButton").click(function() {
-      console.log('event: displayPercentChart')
-      displayPercentChart();
-    });
-
-    $("#anotherChart").click(function() {
-      console.log('event: displayTreeMap')
-      displayTreeMap();
-    });
+    displayPercentChart();
 
     $("#timespan :button").click(function() {
       var range = $(this).attr("value");
