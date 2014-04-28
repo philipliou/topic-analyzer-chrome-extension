@@ -17,8 +17,12 @@ function chartData() {
   };
   this.tooltip = {
     pointFormat: '<span style="color:{series.color}">{series.name}</span>: <b>{point.percentage:.1f}%</b><br/>',
-    shared: true
+    shared: false
   };
+  this.legend = {
+            // layout: 'horizontal', // default
+    itemDistance: 800
+  }
   
   this.setTitle = function(title) {
     this.title.text = title;
@@ -48,4 +52,6 @@ function chartData() {
   this.setSeries = function(objArray) {
     this.series = objArray;
   }
+
+
 }

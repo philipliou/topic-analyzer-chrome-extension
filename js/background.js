@@ -36,7 +36,7 @@ var NewsHistoryRetriever = function() {
             if (!inProgress) {
                 var searchObject = {
                     text: "",
-                    startTime: that.start_range,
+                    startTime: Number(that.start_range),
                     endTime: that.end_range, 
                     maxResults:  MAX_RESULTS //no need to limit this since time range is already a constraint
                 };
