@@ -318,7 +318,7 @@ function sort_in_place(objects, key, compCb) {
 }
 
 function dateYmd(ts) {
-    var t = ts ? new Date(ts) : new Date();
+    var t = ts ? new Date(Number(ts)) : new Date();
     var dd = t.getDate() > 9 ? t.getDate() : "0" + t.getDate();
     var mnt = t.getMonth() + 1;
     var mm = mnt > 9 ? mnt : "0" + mnt;
