@@ -1,0 +1,89 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Topic Analysis: Settings</title>
+        <!--
+          - JavaScript and HTML must be in separate files: see our Content Security
+          - Policy documentation[1] for details and explanation.
+          -
+          - [1]: http://developer.chrome.com/extensions/contentSecurityPolicy.html
+        -->
+        <link rel="stylesheet" type="text/css" href="../css/main.css" />
+        <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css" />
+        <script src="../js/aclient.js"></script>
+        <script src="../js/jquery.js"></script>
+        <script src="../js/angular.min.js"></script>
+        <script src="../js/bootstrap.min.js"></script>
+        <script src="../js/settings.js"></script>
+    </head>
+    <body>
+        <div class="container" ng-app="settingsApp" style="width: 600px; margin: 10px auto;">
+            <div id="results" style="text-align: center;">
+                <h3> Settings </h3>
+            </div>
+            <div ng-controller="DomainsCtrl">
+                <form class="form-horizontal" ng-submit="persistAndClose()">
+                    <div class="panel panel-info">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">News Website Domains</h3>
+                        </div>
+                        <div class="panel-body">
+                            <div>
+                                Only history from the websites listed belows will be analyzed. You only need to specify the domain name of the website.
+                            </div>
+                            <div class="row" >
+                                <div ng-repeat="domain in domainList" class="col-xs-12">
+                                    <div class="form-group">
+                                        <div class="col-xs-9">
+                                            <input type="text" ng-model="domain.host" pattern="^[A-Za-z0-9-]+(\.[A-Za-z0-9-]+)*(\.[A-Za-z]{2,})$" class="form-control" required=""/>
+                                        </div>
+                                        <div class="col-xs-3">
+                                            <button class="btn btn-warning" ng-click="remove($index)">
+                                                &times; Delete
+                                            </button>
+                                        </div>
+                                    </div>    
+                                </div>
+                            </div>   
+                            <div class="btn-group">
+                                <button type="button" ng-click="add();" class="btn btn-info">Add Domain</button>
+                                <button type="button" class="btn btn-info" id="multipleModalToggle">Add Multiple Domain</button>
+                            </div>
+                            <div ng-if="domainList.length < 1" >
+                                You do not have any website domains enable for Topic Analysis. 
+                                <a href="#" class="btn btn-sm btn-success" ng-click="add()">+ Add Domains</a>
+                            </div>
+
+                        </div>
+                        <div class="panel-footer" style="text-align: right;">
+                            <button class="btn btn-success btn-lg" type="submit">
+                                Save Domains
+                            </button>
+                        </div>
+
+                    </div>
+                    <div class="modal fade" id="multipleModal">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <a class="close" data-toggle="modal">&times;</a>
+                                    <h3 class="modal-title">Add Multiple Domains</h3>
+                                </div>
+                                <div class="modal-body">
+                                    <p>You can copy an paste a list of domains in the box below, the domains should be separated by space or new line.</p>
+                                    <textarea rows="6" id="multiDomains" class="form-control"></textarea>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-success" ng-click="addMulti()">Add Domains</button>
+                                    <button type="button" data-toggle="modal" class="btn btn-danger">Cancel</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </body>
+</html>
+
