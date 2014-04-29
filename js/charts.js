@@ -62,8 +62,9 @@ var percentChartPlotOptions = {
             lineColor: '#ffffff'
         }
     }
-}
+};
 // Returns a chartObject from JSON
+var COLOR_LIST = ["Crimson", "Gold", "BlueViolet", "DodgerBlue", "DeepPink", "ForestGreen", "Yellow", "GreenYellow", "Silver", "OrangeRed", "LemonChiffon"];
 function convertJsonToChartOBject(json, xhr) {
     var co = new chartData();
     co.setChartType('area');
@@ -74,17 +75,19 @@ function convertJsonToChartOBject(json, xhr) {
     var report = json.topics.report;
     var xLabels = [];
     for (propt in report) {
-        xLabels.push(propt)
+        xLabels.push(propt);
     }
     co.setXAxisCategories(xLabels);
 
     var cd = [];
+    var count = 0;
     for (var topicId in json.topics.topics) {
         var obj = {'name': json.topics.topics[topicId].split(",").splice(0, 5) + "..."};
         obj.data = [];
         for (var grouping in json.topics.report) {
             obj.data.push(json.topics.report[grouping][topicId].totalScore);
         }
+        obj.color = COLOR_LIST[count++];
         cd.push(obj);
     }
 
@@ -96,7 +99,7 @@ function convertJsonToChartOBject(json, xhr) {
 function displayPercentChart(startDate, endDate, groupBy) {
     // Redundant frontend check b/c done on backend already, but for safety.
     if (!startDate) {
-        startDate = Date.now() - 1 * DAYS
+        startDate = Date.now() - 1 * DAYS;
     }
 
     if (!endDate) {
@@ -104,7 +107,7 @@ function displayPercentChart(startDate, endDate, groupBy) {
     }
 
     if (!groupBy) {
-        groupBy = REPORT_GROUP_BY_DAY
+        groupBy = REPORT_GROUP_BY_DAY;
     }
 
 //    console.log("Start Date: " + startDate + "->" + dateYmd(startDate));
@@ -113,7 +116,14 @@ function displayPercentChart(startDate, endDate, groupBy) {
             dateYmd(startDate),
             dateYmd(endDate),
             groupBy,
-            convertJsonToChartOBject,
+            function(data, xhr) {
+                convertJsonToChartOBject(data);
+                if (reportUpdateListeners && reportUpdateListeners instanceof Array) {
+                    for (var i in reportUpdateListeners) {
+                        reportUpdateListeners[i](data, xhr);
+                    }
+                }
+            },
             function(response, xhr) {
                 console.log("Failed to convert")
             }

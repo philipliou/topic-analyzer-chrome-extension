@@ -1,5 +1,6 @@
 var DEFAULT_DOMAINS = ["www.cnn.com", "www.cbs.com", "www.abcnews.go.com", "www.reuters.com", "www.dailynews.yahoo.", "www.yahoo.com", "news.yahoo.com", "www.bbc.co.uk", "www.huffingtonpost.com", "news.google.com", "www.foxnews.com", "www.dailymail.co.uk", "www.washingtonpost.com", "www.wsj.com", "www.theguardian.com", "www.usatoday.com", "news.bbc.co.uk", "www.latimes.com", "www.nytimes.com", "www.nyt.com", "www.bbc.com"];
 
+var reportUpdateListeners = [];
 var SERVER_ENDPOINT = "http://topicanalysis.intelworx.com/";
 var CURRENT_VERSION = 20140419.001;
 var KEY_USER_ID = "userId";

@@ -12,3 +12,16 @@ img {
   width: 75px;
   height: 75px;
 }
+
+#dataTable .groupRow {
+    border-top: solid 1px #ccc;
+}
+
+#dataTable .example {
+    padding-top: 10px;
+}
+#dataTable .topicName {
+    color: rgb(141, 70, 83);
+    font-weight: bold;
+    font-size: 1.0em;
+}

@@ -8,10 +8,11 @@
           -
           - [1]: http://developer.chrome.com/extensions/contentSecurityPolicy.html
         -->
-        <link rel="stylesheet" type="text/css" href="../css/main.css" />
         <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css" />
+        <link rel="stylesheet" type="text/css" href="../css/main.css" />
         <script src="../js/aclient.js"></script>
         <script src="../js/jquery.js"></script>
+        <script src="../js/angular.min.js"></script>
         <script src="../js/bootstrap.min.js"></script>
         <script src="../js/newsapp.js"></script>
         <script src="../js/charts.js"></script>
@@ -48,6 +49,35 @@
                 </div>
             </div>
             <div id="container" style="min-width: 600px; max-width: 800px; height: 800px; margin: 0 auto" class="container"></div>
+            <div ng-app="dataTable">
+                <div ng-controller="dataTableCtrl">
+                    <div id="dataTable">
+                        <div ng-repeat="(grouping, entries) in report" class="row groupRow" id="group{{grouping}}}">
+                            <a name="{{grouping}}"></a>
+                            <div class="col-xs-4">
+                                <h3 class="grouping">{{grouping}}</h3>
+                            </div>
+                            <div class="col-xs-8">
+                                <div ng-repeat="(topicId, topicEntry) in entries" >
+                                    <div ng-if="hasExamples(topicEntry)">
+                                        <h4 class="topicName">
+                                            {{topics[topicId]}} {{topicId}}
+                                        </h4>
+                                        <div ng-repeat="urlTitle in topicEntry.examples.split('\n')" class="example">
+                                            <span class="exampleTitle">
+                                                {{urlTitle.split("||")[0]}}
+                                            </span>
+                                            <span class="exampleUrl">
+                                                <a target="_blank" href="{{urlTitle.split("||")[1]}}">{{urlTitle.split("||")[1]}}</a>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </body>
 </html>

@@ -90,3 +90,24 @@ function epochFromText(range) {
         fromDate: fromDate
     }
 }
+
+
+//added by joseph
+var tableApp = angular.module('dataTable', [])
+        .controller("dataTableCtrl", function($scope){
+            $scope.topics = {};
+            $scope.report = {};
+            $scope.hasExamples = function(entry){
+                if(!(entry.examples instanceof Array)){
+                    //console.log("Examples: "+entry.examples+" Length: "+ entry.examples.length);
+                    return entry.examples.length > 0;
+                }
+                return false;
+            };
+            reportUpdateListeners.push(function(data){
+                $scope.topics = data.topics.topics;
+                $scope.report = data.topics.report;
+                console.log($scope.report);
+                $scope.$apply();
+            });
+        });
