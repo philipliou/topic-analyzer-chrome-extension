@@ -87,12 +87,23 @@ function convertJsonToChartOBject(json, xhr) {
         for (var grouping in json.topics.report) {
             obj.data.push(json.topics.report[grouping][topicId].totalScore);
         }
-        obj.color = COLOR_LIST[count++];
+        obj.color = convertColorToAlpha(COLOR_LIST[count++], 0.8);
         cd.push(obj);
     }
 
     co.setSeries(cd);
     $('#container').highcharts(co);
+}
+
+function convertColorToAlpha(color, alhpa){
+    var c  = $('<p></p>').css('color', color)[0];
+    document.body.appendChild(c);
+    var colorRgb = window.getComputedStyle(c).color;
+    $(c).remove();
+    delete c;
+    var res = colorRgb.replace(")", ", "+alhpa+")").replace("rgb", "rgba");
+    //console.log(res);
+    return res;
 }
 
 // Display the chart on the extension
