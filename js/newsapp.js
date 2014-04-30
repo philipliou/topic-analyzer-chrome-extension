@@ -11,7 +11,7 @@ function getHistory() {
             urls.push(domain);
         }
         displayHistory(urls);
-    })
+    });
 }
 // Displays the array of urls on the extension
 function displayHistory(url_array) {
@@ -22,16 +22,7 @@ function displayHistory(url_array) {
         }).appendTo('#results');
     }
 }
-// Returns true if domain is in Whitelist of news domains
-function newsURL(url) {
-    var whitelist = {
-        'www.cnn.com': true,
-        'www.newyorktimes.com': true,
-        'www.nyt.com': true,
-        'www.wallstreetjournal.com': true,
-        'www.wsj.com': true,
-    }
-}
+
 // Helper to parse domain from URL
 function url_domain(data) {
     var a = document.createElement('a');
@@ -118,6 +109,12 @@ var tableApp = angular.module('dataTable', [])
 var treeLoader = function(reportData) {
     $("#treeMapContainer").html("");//clear the tree
     //tree map
+    var colors = {};
+    var colorIdx = 0;
+    for(var topicId in reportData.topics.topics){
+        colors[reportData.topics.topics[topicId]] = convertColorToAlpha(COLOR_LIST[colorIdx++], 0.8) ;
+    }
+    
     var w = $('.container').width(),
             h = 800 - 180,
             x = d3.scale.linear().range([0, w]),
@@ -227,7 +224,7 @@ var treeLoader = function(reportData) {
                 return d.dy - 1;
             })
             .style("fill", function(d) {
-                return color(d.parent.name);
+                return colors[d.parent.name];
             });
 
     cell.append("svg:text")
