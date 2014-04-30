@@ -32,6 +32,18 @@ function url_domain(data) {
 
 document.addEventListener('DOMContentLoaded',
         function() {
+            var setLoading = function() {
+                $('.contentSection').hide();
+                $('#loadingSection').show();
+            };
+
+            reportUpdateListeners.push(function() {
+                $('.contentSection').show();
+                $('#loadingSection').hide();
+                console.log("Calling me...");
+            });
+            
+            setLoading();
             displayPercentChart();
 
             $("#timespan :button").click(function() {
@@ -53,6 +65,7 @@ document.addEventListener('DOMContentLoaded',
                 var toDate = $("#timespan #toDate").attr("value");
                 var fromDate = $("#timespan #fromDate").attr("value");
                 var groupBy = $("#grouping").attr("value");
+                setLoading();
                 displayPercentChart(fromDate, toDate, groupBy);
                 console.log("event: displayPercentChart");
             };
@@ -111,10 +124,10 @@ var treeLoader = function(reportData) {
     //tree map
     var colors = {};
     var colorIdx = 0;
-    for(var topicId in reportData.topics.topics){
-        colors[reportData.topics.topics[topicId]] = convertColorToAlpha(COLOR_LIST[colorIdx++], 0.8) ;
+    for (var topicId in reportData.topics.topics) {
+        colors[reportData.topics.topics[topicId]] = convertColorToAlpha(COLOR_LIST[colorIdx++], 0.8);
     }
-    
+
     var w = $('.container').width(),
             h = 800 - 180,
             x = d3.scale.linear().range([0, w]),
@@ -260,7 +273,7 @@ reportUpdateListeners.push(treeLoader);
 $(function() {
     $('#treeMapBtn').click(function() {
         var top = $('#treeMapContainer').offset().top;
-        
+
         $('#treeMapContainer').stop().animate({
             'top': top > 0 ? -1000 : 70
         }, 500);

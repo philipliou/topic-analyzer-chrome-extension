@@ -74,17 +74,19 @@ function displayPercentChart(startDate, endDate, groupBy) {
 
 //    console.log("Start Date: " + startDate + "->" + dateYmd(startDate));
 //    console.log("End Date: " + endDate);
+    
     topicAnalysisClient.getReport(
             dateYmd(startDate),
             dateYmd(endDate),
             groupBy,
             function(data, xhr) {
-                convertJsonToChartOBject(data);
                 if (reportUpdateListeners && reportUpdateListeners instanceof Array) {
                     for (var i in reportUpdateListeners) {
+                        console.log("Calling function: "+reportUpdateListeners[i]);
                         reportUpdateListeners[i](data, xhr);
                     }
                 }
+                convertJsonToChartOBject(data);
             },
             function(response, xhr) {
                 console.log("Failed to convert")
